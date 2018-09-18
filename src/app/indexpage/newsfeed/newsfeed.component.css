@@ -1,0 +1,88 @@
+.data{
+    background-color: rgb(235, 241, 255);
+    padding: 0px;
+}
+.data-inner{
+    max-width: 90%;
+    padding: 4px 10px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid rgb(202, 202, 202);
+}
+.btn-edit{
+    height: 40px;
+    font-size:14px;
+}
+.profile-bar{
+    text-align: center;
+    padding: 0px 40px;
+}
+.profile-photo{
+    max-height: 110px;
+    margin-top: -60px;
+}
+.profile-photo img{
+    max-height: 160px;
+    border: 4px solid rgb(150, 150, 150);
+    border-radius: 6px;
+}
+.bar-data{
+    font-size: 14px;
+}
+.bar-data p{
+    border-bottom: 3px solid rgb(255, 255, 255);
+}
+.bar-data p:hover{
+    border-bottom: 3px solid rgb(60, 106, 233);
+}
+
+.login p{
+    font-size: 14px;
+}
+.data-inner-profile{
+    max-width: 90%;
+    padding: 4px 40px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid rgb(202, 202, 202);
+}
+.profile-summary{
+    padding: 20px 30px;
+    font-size: 15px;
+    line-height: 8px;
+}
+.profile-tweets{
+    border: 1px solid rgb(194, 194, 194);    
+    border-radius: 5px;
+    margin: 20px 20px;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 4px;
+}
+.profile-tweets-photo{
+    max-height: 25px;
+}.profile-tweets-content{
+    padding: 12px 0px;
+}
+.btn-like{
+    height: 30px;
+    font-size:10px;
+}
+.btn-comment{
+    height: 30px;
+    font-size:10px;
+}
+.btn-share{
+    height: 30px;
+    font-size:10px;
+}
+.tweets-comment{
+    font-size: 14px;
+    height: 30px;
+    border-radius: 10px;
+}
+.btn-comment-post{
+    max-height: 30px;
+    max-width: 80px;
+    font-size: 12px;
+}

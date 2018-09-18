@@ -1,0 +1,61 @@
+.top-bar{
+    background-color:rgb(255, 254, 254);
+    text-align: center;
+    padding: 8px;
+    border-bottom: 2px solid rgb(180, 180, 180);
+}
+.top-bar-data{
+    max-width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+.top-bar ul li{
+    float: left;
+    list-style: none;
+}
+.top-bar ul li a{
+    font-size: 14px;
+    font-weight: bold;
+    padding:10px;
+    text-decoration:none;
+    color:rgb(112, 112, 112);
+}
+.top-bar ul li a:hover{
+    color: #3b47e6;
+}
+.data{
+    background-color: rgb(223, 225, 231);
+    padding: 16px;
+}
+.data-inner{
+    max-width: 64%;
+    padding: 40px 100px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid rgb(202, 202, 202);
+}
+.signup-data{
+    text-align: left;
+}
+.signup-data p{
+    font-weight: bold;
+    font-size: 24px;
+}
+.placeholder-size{
+    font-size: 14px;
+}
+.btn-signup{
+    color: #ffffff;
+    background-color: #1da1f2;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #1da1f2;
+    border-radius: 30px;
+    height: 35px;
+    width: 100%;
+    margin: 0 auto;
+}
+.login p{
+    font-size: 14px;
+}
