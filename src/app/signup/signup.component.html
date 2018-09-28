@@ -12,7 +12,7 @@
       <div class="col col-md-12 data-inner">
         <div class="row">
           <div class="col col-md-8 signup-data">
-            <p>Sign up to twitter</p>
+            <p>Sign up to airtime</p>
             <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="form-group" method="POST">
               <div class="form-group">
                 <div class="row form-group">
@@ -63,3 +63,16 @@
     </div>
   </div>
 </div>
+      <!-- Pop-up to signup success -->
+      <p-dialog header="Signup success" [(visible)]="display" [modal]="true"
+        [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+        [maximizable]="false" [baseZIndex]="10000">
+
+        <div>
+          <p>Signup success,now you can login with your email : {{ email }}</p>
+        </div>
+
+        <p-footer>
+          <button routerLink="/" type="button" pButton icon="pi pi-check" (click)="display=false" label="Goto SignIn"></button>
+        </p-footer>
+      </p-dialog>

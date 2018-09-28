@@ -7,14 +7,22 @@ import { NewsfeedComponent } from './indexpage/newsfeed/newsfeed.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { NotificationsComponent } from './indexpage/notifications/notifications.component';
+import { MessagesComponent } from './indexpage/messages/messages.component';
+import { AuthGuard } from './core/services/auth-guard.service';
 
 const routes: Routes = [
-  { path:'' , component: WelcomepageComponent },
-  { path:'index' , component: IndexpageComponent },
-  { path:'newsfeed' , component: NewsfeedComponent },
-  { path:'profile' , component: ProfileComponent },
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path:'welcome' , component: WelcomepageComponent },
+  { path:'index' , component: IndexpageComponent,canActivate: [AuthGuard] },
+  { path:'newsfeed' , component: NewsfeedComponent,canActivate: [AuthGuard] },
+  { path:'profile' , component: ProfileComponent,canActivate: [AuthGuard] },
   { path:'signup' , component: SignupComponent },
-  { path:'settings' , component: SettingsComponent }
+  { path:'settings' , component: SettingsComponent,canActivate: [AuthGuard] },
+  { path:'changepassword' , component: ChangepasswordComponent,canActivate: [AuthGuard] },
+  { path:'notifications' , component: NotificationsComponent,canActivate: [AuthGuard] },
+  { path:'messages' , component: MessagesComponent,canActivate: [AuthGuard] }
 ];
 
 @NgModule({

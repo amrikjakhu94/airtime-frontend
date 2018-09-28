@@ -1,6 +1,7 @@
 <app-header></app-header>
 <br/>
-<form [formGroup]="imageUpload" (ngSubmit)="onSave(file)" class="form-group" method="POST">
+
+<!-- <form [formGroup]="imageUpload" (ngSubmit)="onSave(file)" class="form-group" method="POST">
   <div class="form-group">
 
     <div class="col-lg-10">
@@ -13,7 +14,7 @@
       <button type="submit" class="btn btn-primary sub-btn">Upload it</button>
     </div>
   </div>
-</form>
+</form> -->
 
 <div class="container">
     <div class="row">
@@ -23,8 +24,8 @@
           <div class="top-header-thumb">
             <img src="../../../assets/img/top-header1.jpg" alt="nature">
           </div>
-            <input type="file" (change)="onFileSelected($event)" />
-            <button type="button" [disabled]="!fileIsSelected" (click)="onUpload()" >Upload</button>
+            <!-- <input type="file" (change)="onFileSelected($event)" />
+            <button type="button" [disabled]="!fileIsSelected" (click)="onUpload()" >Upload</button> -->
           <div class="profile-section">
             <div class="row">
               <div class="col-lg-5 col-md-5 ">
@@ -92,7 +93,7 @@
         <h6 class="title">Profile Intro</h6>
       </div>
       <div class="ui-block-content">
-        <a routerLink="/profile/editprofile">Edit profile</a>
+        <a routerLink="/settings">Edit profile</a>
         <ul class="widget w-personal-info item-block">
           <li>
             <span class="title">About Me:</span>

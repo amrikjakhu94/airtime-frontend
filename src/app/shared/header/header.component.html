@@ -1,12 +1,72 @@
-<div class="row top-bar">
+<div class="row" style="background-color:#f8f9fa;height: 50px;">
+  <div class="col-md-12">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a routerLink="/index" class="nav-link"><i class=" nav-icon fa fa-home"></i>Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/notifications" class="nav-link active"><i class=" nav-icon fa fa-bell"></i>Notifications</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/messages" class="nav-link active"><i class=" nav-icon fa fa-envelope"></i>Messages</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/settings" class="nav-link active"><i id="loading" class="fas fa-cog"></i>Settings</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" >Action</a>
+              <a class="dropdown-item" >Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" >Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" >Disabled</a>
+          </li> -->
+          <li class="nav-item active" style="border:0px solid red;padding-left: 90px;">
+            <a routerLink="/index" class="nav-link" ><img src="../../../assets/img/airtime.png" style="max-width:70px;" /></a>
+          </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control placeholder-size" type="search" placeholder="Search" aria-label="Search">
+          <button type="submit" style="background-color:transparent;border: 0px;"><i class="fas fa-search"></i></button>
+        </form>
+        <ul class="navbar-nav" style="text-align:right">
+          <li class="nav-item active">
+            <a routerLink="/profile" class="nav-link" ><i class="fas fa-user-friends"></i></a>
+          </li>
+          <li class="nav-item active">
+            <a routerLink="/profile" class="nav-link" ><i class=" nav-icon fa fa-user-circle"></i>Profile <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <!-- <button (click)="destroyToken()" type="button" class="btn btn-primary" >Logout</button> -->
+            <!-- <a routerLink="/" class="nav-link active" ><i class="nav-icon fa fa-sign-out-alt"></i>Logout</a> -->
+            <a routerLink="/temp" (click)="destroyToken()" class="nav-link active" ><i class="nav-icon fa fa-sign-out-alt"></i>Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+
+<!-- <div class="row top-bar">
     <div class="col col-md-12">
       <div class="row" style="padding-left:22px;">
         <div class="col col-md-5 logo-site">
           <ul>
-            <li> <a routerLink="/index" routerLinkActive="active"><i class=" nav-icon fa fa-home"></i>Home</a> </li>
-            <li> <a routerLink="/notifications" routerLinkActive="active"><i class=" nav-icon fa fa-bell"></i>Notifications</a> </li>
-            <li> <a href=""><i class=" nav-icon fa fa-envelope"></i>Messages</a> </li>
-            <li> <a routerLink="/settings"><i class="fas fa-cog"></i>Settings</a> </li>
+            <li> <a routerLink="/index" ><i class=" nav-icon fa fa-home"></i>Home</a> </li>
+            <li> <a routerLink="/notifications" ><i class=" nav-icon fa fa-bell"></i>Notifications</a> </li>
+            <li> <a routerLink="/messages" ><i class=" nav-icon fa fa-envelope"></i>Messages</a> </li>
+            <li> <a routerLink="/settings" ><i class="fas fa-cog"></i>Settings</a> </li>
           </ul>
         </div>
         <div class="col col-md-2 logo-site">
@@ -22,11 +82,11 @@
               <a routerLink="/profile" routerLinkActive="active"><i class=" nav-icon fa fa-user-circle"></i>Profile</a>
             </li>
              <li>
-              <a style="padding-right:0px;"><i class="nav-icon fa fa-sign-out-alt"></i>Logout</a>
+              <a routerLink="/"><i class="nav-icon fa fa-sign-out-alt"></i>Logout</a>
             </li>
           </ul>    
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- <i class="fab fa-phoenix-framework" style="color:rgb(88, 127, 255);float:left;padding-top:5px;font-weight:normal"></i> -->
