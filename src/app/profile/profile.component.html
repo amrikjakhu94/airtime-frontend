@@ -1,5 +1,19 @@
 <app-header></app-header>
 <br/>
+<form [formGroup]="imageUpload" (ngSubmit)="onSave(file)" class="form-group" method="POST">
+  <div class="form-group">
+
+    <div class="col-lg-10">
+
+        <label for="file-upload" (click)="file.click();" class="custom-file-upload">
+    <i class="fa fa-cloud-upload"></i> Browse
+  </label>
+        <input style="display:none;" (change)="fileChangeEvent($event)" #file type="file" class="file" accept="image/*">
+      <span *ngIf="showFileName == true"><input class="form-control" formControlName="filename" name="filename" type="text"></span>
+      <button type="submit" class="btn btn-primary sub-btn">Upload it</button>
+    </div>
+  </div>
+</form>
 
 <div class="container">
     <div class="row">
@@ -9,28 +23,33 @@
           <div class="top-header-thumb">
             <img src="../../../assets/img/top-header1.jpg" alt="nature">
           </div>
+            <input type="file" (change)="onFileSelected($event)" />
+            <button type="button" [disabled]="!fileIsSelected" (click)="onUpload()" >Upload</button>
           <div class="profile-section">
             <div class="row">
               <div class="col-lg-5 col-md-5 ">
                 <ul class="profile-menu">
                   <li>
-                    <a routerLink="/profile/tweets" >Tweets</a>
+                    <a routerLink="/profile/tweets">Tweets</a>
                   </li>
                   <li>
                     <a routerLink="/profile/likes">Likes</a>
                   </li>
                   <li>
-                    <a routerLink="/profile/retweets" >Re-tweets</a>
+                    <a routerLink="/profile/retweets">Re-tweets</a>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-5 ml-auto col-md-5">
                 <ul class="profile-menu">
                   <li>
-                    <a routerLink="/profile/followers" >Followers</a>
+                    <a routerLink="/profile/followers">Followers</a>
                   </li>
                   <li>
-                    <a routerLink="/profile/following" >Following</a>
+                    <a routerLink="/profile/following">Following</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['/settings']">Edit Profile</a>
                   </li>
                 </ul>
               </div>
@@ -57,7 +76,7 @@
   <div class="row">
     <!-- Main Content -->
     <main class="col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-xs-12">
-      
+
       <router-outlet></router-outlet>
 
       <a id="load-more-button" href="#" class="btn btn-control btn-more" data-load-link="items-to-load.html" data-container="newsfeed-items-grid"><svg class="olymp-three-dots-icon"><use xlink:href="icons/icons.svg#olymp-three-dots-icon"></use></svg></a>

@@ -13,8 +13,14 @@ export class SignupComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.signupForm = fb.group({
-      "firstname" : ['',Validators.required],
-      "lastname" : ['',Validators.required],
+      "firstname" : ['',Validators.compose([
+        Validators.required,
+        Validators.minLength(3)
+      ])],
+      "lastname" : ['',Validators.compose([
+        Validators.required,
+        Validators.minLength(2)
+      ])],
       "username" : ['',Validators.required],
       "email" : ['',Validators.compose([
         Validators.required,
@@ -25,7 +31,7 @@ export class SignupComponent implements OnInit {
         Validators.minLength(4)
       ])]
     });
-    
+
     // this.signupForm.valueChanges
     //                   .filter(data => this.signupForm.valid)
     //                   .map(data => {

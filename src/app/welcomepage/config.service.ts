@@ -12,7 +12,7 @@ export class ConfigService {
 
   signInRequest(signIn: any[]){
     console.log(signIn+'Config service');
-    return this.http.post('https://ngapp-f3c2d.firebaseio.com/data.json',signIn);
+    return this.http.post('https://ngapp-f3c2d.firebaseio.com/amrik.json',signIn);
   }
 
   getConfig(){

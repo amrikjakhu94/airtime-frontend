@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../core/services/api.service';
 
 @Component({
   selector: 'app-tweets',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TweetsComponent implements OnInit {
 
-  constructor() { }
+  tweets$: Object;
+
+  constructor(private tweets : ApiService) { }
 
   ngOnInit() {
+    this.tweets.getTweets().subscribe(
+      data => {this.tweets$ = data
+      console.log(data);
+      }
+      
+    );
   }
 
 }

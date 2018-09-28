@@ -6,7 +6,7 @@ import { TweetsComponent } from './tweets/tweets.component'
 import { RetweetsComponent } from './retweets/retweets.component'
 import { FollowersComponent } from './followers/followers.component'
 import { FollowingComponent } from './following/following.component'
-import { EditprofileComponent } from './editprofile/editprofile.component';
+import { SettingsComponent } from '../settings/settings.component';
 
 const profileRoutes : Routes = [
     {
@@ -17,7 +17,7 @@ const profileRoutes : Routes = [
             { path : 'retweets' , component : RetweetsComponent },
             { path : 'followers' , component : FollowersComponent },
             { path : 'following' , component : FollowingComponent },
-            { path : 'editprofile' , component : EditprofileComponent },
+            { path : 'settings' , component : SettingsComponent },
             { path: 'profile', redirectTo: '/tweets', pathMatch: 'full' }
         ]
     }

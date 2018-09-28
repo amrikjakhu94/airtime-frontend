@@ -37,7 +37,7 @@ export class WelcomepageComponent implements OnInit {
     this.configService.signInRequest(this.loginForm.value)
       .subscribe(
         (response) => console.log(response),
-        (error) => console.log(error)
+        (error) => console.log(error+'Error occured')
     );
 
     //console.log(JSON.stringify(this.loginForm.value)+"Login details submitted successfully");
