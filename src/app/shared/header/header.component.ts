@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtService } from '../../core/services/jwt.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
@@ -9,10 +9,20 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  username:string;
   constructor(private jwtservice : JwtService,
               private router : Router,
-              private spinnerService : Ng4LoadingSpinnerService) { }
+              private spinnerService : Ng4LoadingSpinnerService,
+              private route : ActivatedRoute)
+              {
+                this.route.params.subscribe(
+                  params => {
+                    params['username'];
+                    this.username = params.username;
+                    // console.log(this.username);
+                  }
+                )
+              }
 
   destroyToken(){
     this.spinnerService.show();

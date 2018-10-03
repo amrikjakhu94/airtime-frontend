@@ -16,7 +16,6 @@ import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { IndexpageComponent } from './indexpage/indexpage.component';
 import { NewsfeedComponent } from './indexpage/newsfeed/newsfeed.component';
 import { SharedModule } from './shared/shared.module';
-import { ProfileModule } from './profile/profile.module';
 import { SignupComponent } from './signup/signup.component';
 import { ConfigService } from './welcomepage/config.service';
 import { SettingsComponent } from './settings/settings.component';
@@ -38,13 +37,12 @@ import { JwtService } from './core/services/jwt.service';
     SettingsComponent,
     ChangepasswordComponent,
     NotificationsComponent,
-    MessagesComponent
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    ProfileModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpModule,
@@ -53,7 +51,7 @@ import { JwtService } from './core/services/jwt.service';
     DialogModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ButtonModule
+    ButtonModule,
   ],
   providers: [
     ConfigService,

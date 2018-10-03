@@ -14,8 +14,10 @@ export class ApiService {
               private router : Router,
               private jwtservice : JwtService) { }
 
-  getTweets(){
-    return this.http.get('https://spotty-turtle-64.localtunnel.me/api/users/liam/tweets');
+  fotosUrl = 'https://jsonplaceholder.typicode.com/photos';
+
+  getFotos(){
+    return this.http.get(this.fotosUrl);
   }
 
   signInRequest(signIn:Object){
@@ -29,8 +31,18 @@ export class ApiService {
   editProfileRequest(editProfile:Object){
     return this.http.post('https://airtime-api.herokuapp.com/api/users/signup',editProfile);
   }
+
   isAuthenticated(){
     this.token = this.jwtservice.getToken();
     return this.token != null;
   }
+
+  getMyTweets(){
+    return this.http.get('https://airtime-api.herokuapp.com/api/users/<username>/tweets');
+  }
+
+  newTweetRequest(newTweet:Object):Observable<any>{
+    return this.http.get('https://airtime-api.herokuapp.com/api/users/<username>/tweets');
+  }
+
 }

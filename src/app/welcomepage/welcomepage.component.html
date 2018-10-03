@@ -1,111 +1,111 @@
-<div class="data">
-  <div class="row">
-    <div class="col col-xs-2 col-md-6 left-col">
-      <div class="left-col-data">
-        <ul>
-          <li>
+<div>
+  <div class="data">
+    <div class="row">
+      <div class="col col-xs-2 col-md-6 left-col">
+        <div class="left-col-data">
+          <ul>
+            <li>
               <i class="material-icons">bubble_chart</i>Connect people around you.
-          </li>
-          <li>
+            </li>
+            <li>
               <i class="material-icons">search</i>Follow your interests.
-          </li>
-          <li>
+            </li>
+            <li>
               <i class="material-icons">people</i>Hear what people are talking about.
-          </li>
-          <li>
-              <i class="material-icons">chat</i>Join the conversation.
-          </li>
-        </ul>
-      </div>
-    </div> <!-- Left col-md-6 ends -->
+            </li>
+          </ul>
+        </div>
+      </div> <!-- Left col-md-6 ends -->
 
-    <!-- Right column -->
-      <div class="col col col-xs-2 col-md-6 right-col">
-        <div class="row"> <!-- Login content starts -->
-          <div class="col col col-xs-6 col-md-12 right-col-form"> <!-- Column col-12 starts -->
-            <!-- Form starts here -->
-              <div>
-                <div class="row">
-                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-group" method="POST">
-                    <div class="form-row">
-                      <div class="col col-xs-2 col-md-4">
-                        <input type="text" formControlName="email" class="form-control placeholder-size" name="email" placeholder="Phone number,email address"/>
+      <!-- Right column -->
+        <div class="col col col-xs-2 col-md-6 right-col">
+          <div class="row"> <!-- Login content starts -->
+            <div class="col col col-xs-6 col-md-12 right-col-form"> <!-- Column col-12 starts -->
+              <!-- Form starts here -->
+                <div>
+                  <div class="row">
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-group" method="POST">
+                      <div class="form-row">
+                        <div class="col col-xs-2 col-md-4">
+                          <input type="text" formControlName="email" class="form-control placeholder-size" name="email" placeholder="Phone number,email address"/>
+                        </div>
+                        <div class="col col-xs-2 col-md-4">
+                          <input type="password" formControlName="password" class="form-control placeholder-size" name="password" placeholder="Password"/>
+                        </div>
+                        <div class="col col-xs-1 col-md-2">
+                          <button type="submit"[disabled]="!loginForm.valid" routerLinkActive="active" class="form-control login-btn" name="login" >Login</button>
+                        </div>
                       </div>
-                      <div class="col col-xs-2 col-md-4">
-                        <input type="password" formControlName="password" class="form-control placeholder-size" name="password" placeholder="Password"/>
-                      </div>
-                      <div class="col col-xs-1 col-md-2">
-                        <button type="submit"[disabled]="!loginForm.valid" routerLinkActive="active" class="form-control login-btn" name="login" >Login</button>
-                      </div>
-                    </div>
-                  </form> <!-- Form ends here -->
+                    </form> <!-- Form ends here -->
 
-                </div>
-                <div class="row">
-                  <div class="col col-xs-2 col-md-5">
                   </div>
-                  <div class="col col-xs-2 col-md-5">
-                    <div class="forgot-password">
-                      <a routerLink="/passwordreset" routerLinkActive="active">Forgot password?</a>
+                  <div class="row">
+                    <div class="col col-xs-2 col-md-5">
+                    </div>
+                    <div class="col col-xs-2 col-md-5">
+                      <div class="forgot-password">
+                        <a routerLink="/passwordreset" routerLinkActive="active">Forgot password?</a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            
-          </div> <!-- Column col-12 ends -->
-        </div> <!-- Login content ends -->
+              
+            </div> <!-- Column col-12 ends -->
+          </div> <!-- Login content ends -->
 
-        <div class="row">
-          <div class="col col-xs-6 col-md-12 right-col-data">
-            <div class="row">
-              <div class="col col-xs-6 col-md-12 top-data">
-                <img src="../../assets/img/airtime.png" alt="twitter" style="max-height:60px;" />
-                <p>
-                  See what’s happening in the world right now
-                </p>
+          <div class="row">
+            <div class="col col-xs-6 col-md-12 right-col-data">
+              <div class="row">
+                <div class="col col-xs-6 col-md-12 top-data">
+                  <img src="../../assets/img/airtime.png" alt="twitter" style="max-height:60px;" />
+                  <p>
+                    See what’s happening in the world right now
+                  </p>
 
-              </div>
-            </div>
-            <div class="row">
-              <div class="col col-xs-6 col-md-12 middle-data">
-                Join airtime today.
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col col-xs-6 col-md-12 bottom-data">
-                <div class="row">
-                  <div class="col col-xs-6 col-md-12">
-                    <button routerLink="/signup" type="button" class="btn btn-signup">
-                      Sign Up
-                    </button>
-                  </div>
                 </div>
-                <p></p>
-                <div class="row">
-                  <div class="col col-xs-6 col-md-12">
-                    <button type="button" class="btn btn-login">Login</button>
+              </div>
+              <div class="row">
+                <div class="col col-xs-6 col-md-12 middle-data">
+                  Join airtime today.
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col col-xs-6 col-md-12 bottom-data">
+                  <div class="row">
+                    <div class="col col-xs-6 col-md-12">
+                      <button routerLink="/signup" type="button" class="btn btn-signup">
+                        Sign Up
+                      </button>
+                    </div>
                   </div>
+                  <!-- <p></p>
+                  <div class="row">
+                    <div class="col col-xs-6 col-md-12">
+                      <button type="button" class="btn btn-login">Login</button>
+                    </div>
+                  </div> -->
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-      </div> <!-- Right col-md-6 ends -->
+        </div> <!-- Right col-md-6 ends -->
 
-    </div>
-</div>
-      <!-- Pop-up to error -->
-      <p-dialog header="Authentication error" [(visible)]="display" [modal]="true"
-        [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
-        [maximizable]="false" [baseZIndex]="10000">
+      </div> <!--Row ends -->
+      <app-footer></app-footer>
+  </div>
+</div>  
+    <!-- Pop-up to show error -->
+    <p-dialog header="Authentication error" [(visible)]="display" [modal]="true"
+      [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+      [maximizable]="false" [baseZIndex]="10000">
 
-        <div>
-          <p>Invalid email or password</p>
-        </div>
+      <div>
+        <p>Invalid email or password</p>
+      </div>
 
-        <p-footer>
-          <button routerLink="/signup" type="button" pButton icon="pi pi-check" (click)="display=false" label="Exit"></button>
-        </p-footer>
-      </p-dialog>
+      <p-footer>
+        <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Exit"></button>
+      </p-footer>
+    </p-dialog>

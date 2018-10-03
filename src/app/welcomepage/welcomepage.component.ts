@@ -13,15 +13,14 @@ import { JwtService } from '../core/services/jwt.service';
   styleUrls: ['./welcomepage.component.css'],
 })
 export class WelcomepageComponent implements OnInit {
+
   loginForm : FormGroup;
   data$ : Object;
   loginData:Object;
   display : boolean = false;
 
   constructor(private apiService : ApiService,
-              private configService : ConfigService,
               private fb : FormBuilder,
-              private data : ConfigService,
               private spinnerService: Ng4LoadingSpinnerService,
               private router : Router,
               private jwtservice : JwtService){
@@ -50,12 +49,14 @@ export class WelcomepageComponent implements OnInit {
       user:this.loginForm.value
     };
 
-    console.log(this.loginData);
+    //console.log(this.loginData);
     this.apiService.signInRequest(this.loginData)
       .subscribe(
         // (response) => console.log(response),
         (response) => {
           const token = response['user']['token'];
+          const username = response['user']['username'];
+          console.log(username);
           this.jwtservice.saveToken(token);
           this.router.navigate(['/index']);
           this.spinnerService.hide();
@@ -77,7 +78,7 @@ export class WelcomepageComponent implements OnInit {
 
   getPhotos(){
     this.spinnerService.show();
-    this.data.getConfig().subscribe(
+    this.apiService.getFotos().subscribe(
       data => {
         this.data$ = data;
         console.log(this.data$);

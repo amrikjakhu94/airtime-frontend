@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
-import { FormGroup, FormArray, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 const URL = 'http://localhost:3000/api/upload';
 
@@ -18,8 +17,6 @@ export class ProfileComponent implements OnInit {
   cropperReady = false;
   public httpCall: any = false;
   baseImage: Blob;
-  // utills: any;
-  // config: any;
 
   fileChangeEvent(event: any): void {
     this.display = true;
@@ -30,7 +27,7 @@ export class ProfileComponent implements OnInit {
   }
 
   public onSave(fileData) {
-    console.log('Entered SAVE function'+fileData);
+    console.log('Entered onSave() function'+fileData);
      let fileName = this.fileNameData;
    let url = 'https://ngapp-f3c2d.firebaseio.com/amrik';
   

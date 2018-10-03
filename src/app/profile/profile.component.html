@@ -80,7 +80,7 @@
 
       <router-outlet></router-outlet>
 
-      <a id="load-more-button" href="#" class="btn btn-control btn-more" data-load-link="items-to-load.html" data-container="newsfeed-items-grid"><svg class="olymp-three-dots-icon"><use xlink:href="icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
+      <a id="load-more-button" href="#" class="btn btn-control btn-more" data-load-link="items-to-load.html" data-container="newsfeed-items-grid"><svg class="olymp-three-dots-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
 
     </main>
     <!-- ... end Main Content -->
@@ -118,56 +118,9 @@
     
      <!-- Right Sidebar -->
 
-     <aside class="col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-12 col-xs-12">
-        
-        
-        <div class="ui-block">
-          <div class="ui-block-title">
-            <h6 class="title">Follow Suggestions</h6>
-            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
-          </div>
-  
-          <ul class="widget w-friend-pages-added notification-list friend-requests">
-            <li class="inline-items">
-              <div class="author-thumb">
-                <img src="../../../assets/img/avatar38-sm.jpg" alt="author">
-              </div>
-              <div class="notification-event">
-                <a href="#" class="h6 notification-friend">Francine Smith</a>
-                <a href="#" class="accept-request">Follow</a>
-                
-              </div>
-              
-  
-            </li>
-            <li class="inline-items">
-                <div class="author-thumb">
-                  <img src="../../../assets/img/avatar38-sm.jpg" alt="author">
-                </div>
-                <div class="notification-event">
-                  <a href="#" class="h6 notification-friend">Francine Smith</a>
-                  <a href="#" class="accept-request">Follow</a>
-                </div>
-    
-              </li>
-              <li class="inline-items">
-                  <div class="author-thumb">
-                    <img src="../../../assets/img/avatar38-sm.jpg" alt="author">
-                  </div>
-                  <div class="notification-event">
-                    <a href="#" class="h6 notification-friend">Francine Smith</a>
-                    <a href="#" class="accept-request">Follow</a>
-                    
-                  </div>
-                  
-      
-                </li>
-  
-            
-          </ul>
-  
-        </div>
-      </aside>
+    <aside class="col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-12 col-xs-12">
+      <app-follow-suggestions></app-follow-suggestions>
+    </aside>
   
       <!-- ... end Right Sidebar -->
   

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { JwtService } from './core/services/jwt.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'twi';
+
+  constructor(private jwtservice : JwtService, router : Router){
+    if(jwtservice.getToken()){
+      router.navigate(['index'])
+    }
+    else{
+      router.navigate([''])
+    }
+  }
 }

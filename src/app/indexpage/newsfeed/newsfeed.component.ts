@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from '../../core/services/api.service';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-newsfeed',
@@ -8,8 +10,11 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class NewsfeedComponent implements OnInit {
   tweetForm : FormGroup;
-
-  constructor(fb : FormBuilder) {
+  newtweet : Object;
+  constructor(fb : FormBuilder,
+              private apiservice : ApiService,
+              private spinnerservice : Ng4LoadingSpinnerService)
+  {
     this.tweetForm = fb.group({
       "tweetdata" : ['',Validators.required]
     })
@@ -18,6 +23,26 @@ export class NewsfeedComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit(){
-    console.log(JSON.stringify(this.tweetForm.value)+"Tweet data posted successfully");
+    this.newtweet = {
+      tweet : this.tweetForm.value
+    };
+    //console.log(JSON.stringify(this.newtweet)+"Tweet data posted successfully");
+    //console.log(this.newtweet);
+    this.apiservice.newTweetRequest(this.newtweet)
+    .subscribe(
+      (response) => {
+        this.spinnerservice.show();
+        console.log(response);
+        // const email = response.email;
+        // this.showsignupDialog(email);
+        this.spinnerservice.hide();
+      },
+      (error) => {
+        this.spinnerservice.show();
+        console.log(error+'Error occured');
+        this.spinnerservice.hide();
+      }
+  );
+    this.tweetForm.reset();
   }
 }

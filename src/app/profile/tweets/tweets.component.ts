@@ -8,17 +8,16 @@ import { ApiService } from '../../core/services/api.service';
 })
 export class TweetsComponent implements OnInit {
 
-  tweets$: Object;
+  tweets: Object;
 
-  constructor(private tweets : ApiService) { }
+  constructor(private apiService : ApiService) { }
 
   ngOnInit() {
-    this.tweets.getTweets().subscribe(
-      data => {this.tweets$ = data
-      console.log(data);
-      }
-      
-    );
+    // this.apiService.getMyTweets().subscribe(
+    //   data => {this.tweets = data
+    //   console.log(data);
+    //   }
+    // );
   }
 
 }
