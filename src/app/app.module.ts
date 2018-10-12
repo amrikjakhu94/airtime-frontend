@@ -8,6 +8,7 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
+import { CropperModule } from 'ngx-cropper';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,8 @@ import { NotificationsComponent } from './indexpage/notifications/notifications.
 import { ApiService } from './core/services/api.service';
 import { AuthGuard } from './core/services/auth-guard.service';
 import { JwtService } from './core/services/jwt.service';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 
 @NgModule({
@@ -38,6 +41,8 @@ import { JwtService } from './core/services/jwt.service';
     ChangepasswordComponent,
     NotificationsComponent,
     MessagesComponent,
+    AboutusComponent,
+    ContactusComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,7 @@ import { JwtService } from './core/services/jwt.service';
     BrowserModule,
     BrowserAnimationsModule,
     ButtonModule,
+    CropperModule
   ],
   providers: [
     ConfigService,

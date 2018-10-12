@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CropperModule } from 'ngx-cropper';
+import {FileUploadModule} from 'primeng/fileupload';
 
 import { ProfileComponent } from './profile.component';
 import { TweetsComponent } from './tweets/tweets.component';
@@ -19,6 +21,8 @@ import { LikesComponent } from './likes/likes.component';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    CropperModule,
+    FileUploadModule
   ],
   declarations: [
     ProfileComponent,

@@ -3,132 +3,190 @@
 <!-- Your Account Personal Information -->
 
 <div class="container">
-    <div class="row">
-      <div class="col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-xs-12">
-        <div class="ui-block">
-          <div class="ui-block-title">
-            <h6 class="title">Personal Information</h6>
-          </div>
-          <div class="ui-block-content">
-            <form [formGroup]="editprofileForm" (ngSubmit)="onSubmit()" class="form-group">
-              <div class="row">
-  
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <div class="form-group label-floating">
-                    <label class="control-label">First Name</label>
-                    <input formControlName="firstname" class="form-control" placeholder="" type="text" value="James" required>
+  <div class="row">
+    <div class="col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-xs-12">
+      <div class="ui-block">
+        <div class="ui-block-title">
+          <h6 class="title">Personal Information</h6>
+        </div>
+        <div class="ui-block-content">
+          <form [formGroup]="editprofileForm" (ngSubmit)="onSubmit()" class="form-group">
+
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="row">
+                  <div class="col col-md-12" style="color: red;" *ngIf="!editprofileForm.controls.firstname.valid && editprofileForm.controls.firstname.dirty;else error_firstname">
+                    Error in firstname
                   </div>
-  
-                  <div class="  form-group label-floating">
-                    <label class="control-label">Your Email</label>
-                    <input class="form-control" placeholder="" type="email" value="abc@mail.com" disabled>
-                  </div>
-  
-                  <div class="form-group date-time-picker label-floating">
-                    <label class="control-label">Your Birthday</label>
-                    <input formControlName="birthday" type="date" name="datetimepicker" value="10/24/1984" required/>
-                    <span class="input-group-addon">
-                      <svg class="olymp-month-calendar-icon icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-month-calendar-icon"></use></svg>
-                    </span>
+                  <ng-template #error_firstname>
+                    <div class="col col-md-12">Firstname</div>
+                  </ng-template>
+                </div>
+                <div class="row">
+                  <div class="col col-md-12">
+                    <div class="form-group">
+                      <input formControlName="firstname" class="form-control" placeholder="Enter firstname" type="text" value="James" required>
+                    </div>
                   </div>
                 </div>
-  
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <div class="form-group label-floating">
-                    <label class="control-label">Last Name</label>
-                    <input formControlName="lastname" class="form-control" placeholder="" type="text" value="Spiegel" required>
-                  </div>
-  
-                  <div class="form-group label-floating">
-                    <label class="control-label">Username</label>
-                    <input formControlName="username" class="form-control" placeholder="" type="text" value="@username" required>
-                  </div>
-  
-  
-                  <div class="form-group label-floating">
-                    <label class="control-label">Your Phone Number</label>
-                    <input formControlName="contact" class="form-control" placeholder="" type="text" required>
+                <div class="row">
+                  <div class="col col-md-12">
+                    Email
                   </div>
                 </div>
-  
-                
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <div class="form-group label-floating">
-                    <label class="control-label">Write a little description about you</label>
-                    <textarea formControlName="bio" class="form-control" placeholder="">Hi, I’m James, I’m 36 and I work as a Digital Designer for the  “Daydreams” Agency in Pier 56</textarea>
-                  </div>
-  
+                <div class="form-group">
+                  <input class="form-control" placeholder="" type="email" value="abc@mail.com" disabled>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <!-- <div class="form-group label-floating is-empty">
-                    <label class="control-label">Your Birthplace</label>
-                    <input class="form-control" placeholder="" type="text">
+
+                <div class="row">
+                  <div class="col col-md-6">
+                    Your birthday
+                  </div>
+                  <!-- <div class="col col-md-6" style="text-align:right;">
+                    <button type="button" (click)="editBirthday()">Edit</button>
                   </div> -->
-  
-                  <!-- <div class="form-group label-floating">
-                    <label class="control-label">Your Occupation</label>
-                    <input class="form-control" placeholder="" type="text" value="UI/UX Designer">
-                  </div> -->
-  
-                  <div class="form-group label-floating is-select">
-                    <label class="control-label">Status</label>
-                    <select formControlName="relationship" class="form-control" size="auto" required>
-                      <option value="MA">Married</option>
-                      <option value="FE">Not Married</option>
-                    </select>
+                </div>
+                <div class="form-group date-time-picker">
+                  <!-- <h6 class="birthdate">Birthdate</h6> -->
+                  <input formControlName="birthday" type="date" name="datetimepicker" value="" required/>
+                  <span class="input-group-addon">
+                    <svg class="olymp-month-calendar-icon icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-month-calendar-icon"></use></svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="row">
+                  <div class="col col-md-12" style="color: red;" *ngIf="!editprofileForm.controls.lastname.valid && editprofileForm.controls.lastname.dirty;else error_lastname">
+                    Error in lastname
+                  </div>
+                  <ng-template #error_lastname>
+                    <div class="col col-md-12">Lastname</div>
+                  </ng-template>
+                </div>
+                <div class="form-group">
+                  <input formControlName="lastname" class="form-control" placeholder="Enter lastname" type="text" value="" required />
+                </div>
+
+                <div class="row">
+                  <div class="col col-md-12">
+                    Username
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" placeholder="" type="text" value="@abc" disabled />
+                </div>
+
+                <div class="row">
+                  <div class="col col-md-12" style="color: red;" *ngIf="!editprofileForm.controls.contact.valid && editprofileForm.controls.contact.dirty;else error_contactnumber">
+                    Enter correct contact number
+                  </div>
+                  <ng-template #error_contactnumber>
+                    <div class="col col-md-12">Contact number</div>
+                  </ng-template>
+                </div>
+                <div class="form-group">
+                  <input formControlName="contact" class="form-control" placeholder="" type="text" required>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="row">
+                  <div class="col col-md-12">
+                    Write a little description about you
+                  </div>
+                </div>
+                <div class="form-group">
+                  <textarea formControlName="bio" class="form-control" placeholder=""></textarea>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <!-- <div class="form-group label-floating is-empty">
+                  <label class="control-label">Your Birthplace</label>
+                  <input class="form-control" placeholder="" type="text">
+                </div> -->
+
+                <!-- <div class="form-group label-floating">
+                  <label class="control-label">Your Occupation</label>
+                  <input class="form-control" placeholder="" type="text" value="UI/UX Designer">
+                </div> -->
+
+                <div class="form-group is-select">
+                  <div class="row">
+                    <div class="col col-md-12" style="color: red;" *ngIf="!editprofileForm.controls.relationship.valid;else error_maritalstatus">
+                      Select your marital status
+                    </div>
+                    <ng-template #error_maritalstatus>
+                      <div class="col col-md-12">Marital status</div>
+                    </ng-template>
+                  </div>
+                  <select formControlName="relationship" class="custom-select">
+                    <option [value]="relationship" *ngFor="let relationship of relationships">
+                      {{relationship}}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-group is-select">
+                  <div class="row">
+                    <div class="col col-md-12" style="color: red;" *ngIf="!editprofileForm.controls.gender.valid ;else error_gender">
+                      Select your gender
+                    </div>
+                    <ng-template #error_gender>
+                      <div class="col col-md-12">Gender</div>
+                    </ng-template>
                   </div>
 
-                  <div class="form-group label-floating is-select">
-                    <label class="control-label">Your Gender</label>
-                    <select formControlName="gender" class=" form-control" size="auto" required>
-                      <option value="MA">Male</option>
-                      <option value="FE">Female</option>
-                    </select>
-                  </div>
-  
+                  <select formControlName="gender" class="custom-select">
+                    <option [value]="gender" *ngFor="let gender of genders">
+                      {{gender}}
+                    </option>
+                  </select>
+
                 </div>
-                
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <button class="btn btn-secondary btn-lg full-width">Restore all Attributes</button>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <button type="submit" [disabled]="!editprofileForm.valid" class="btn btn-primary btn-lg full-width">Save all Changes</button>
-                </div>
-  
+
               </div>
-            </form>
-          </div>
+              
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <button class="btn btn-secondary btn-lg full-width">Restore all Attributes</button>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <button type="submit" [disabled]="!editprofileForm.valid" class="btn btn-primary btn-lg full-width">Save all Changes</button>
+              </div>
+
+            </div>
+          </form>
         </div>
       </div>
-  
-      <div class="col-xl-3 order-xl-1 col-lg-3 order-lg-1 col-md-12 order-md-2 col-sm-12 col-xs-12 responsive-display-none">
-        <div class="ui-block">
-          <div class="your-profile">
-            <div class="ui-block-title ui-block-title-small">
-              <h6 class="title"><a routerLink = "/profile">Your PROFILE</a></h6>
-            </div>
-  
-            <div id="accordion" role="tablist" aria-multiselectable="true">
-              <div class="card">
-                <div class="card-header" role="tab" id="headingOne">
-                  <h6 class="mb-0">
-                    <a data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne">
-                      Profile Settings
-                      <svg class="olymp-dropdown-arrow-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
-                    </a>
-                  </h6>
-                </div>
-  
-                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                  <ul class="your-profile-menu">
-                    <li>
-                      <a routerLink="/settings" >Personal Information</a>
-                    </li>
-                    <li>
-                      <a routerLink="/changepassword" >Change Password</a>
-                    </li>
-                  </ul>
-                </div>
+    </div>
+
+    <div class="col-xl-3 order-xl-1 col-lg-3 order-lg-1 col-md-12 order-md-2 col-sm-12 col-xs-12 responsive-display-none">
+      <div class="ui-block">
+        <div class="your-profile">
+          <div class="ui-block-title ui-block-title-small">
+            <h6 class="title"><a routerLink = "/profile">Your PROFILE</a></h6>
+          </div>
+
+          <div id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="card">
+              <div class="card-header" role="tab" id="headingOne">
+                <h6 class="mb-0">
+                  <a data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne">
+                    Profile Settings
+                    <svg class="olymp-dropdown-arrow-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                  </a>
+                </h6>
+              </div>
+
+              <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                <ul class="your-profile-menu">
+                  <li>
+                    <a routerLink="/settings" >Personal Information</a>
+                  </li>
+                  <li>
+                    <a routerLink="/changepassword" >Change Password</a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -136,5 +194,6 @@
       </div>
     </div>
   </div>
+</div>
   
   <!-- ... end Your Account Personal Information -->

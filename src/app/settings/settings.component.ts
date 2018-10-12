@@ -10,6 +10,10 @@ import { ApiService } from '../core/services/api.service';
 export class SettingsComponent implements OnInit {
   editprofileForm : FormGroup;
   editprofileData : Object;
+  options_gender : any;
+  editBirthdate : boolean = true;
+  genders = ['Male','Female'];
+  relationships = ['Single','Married','Divorce','Widow'];
 
   constructor(private apiService : ApiService,private fb : FormBuilder){
     this.editprofileForm = fb.group({
@@ -21,16 +25,16 @@ export class SettingsComponent implements OnInit {
         Validators.required,
         Validators.minLength(3)
       ])],
-      "username" : ['', Validators.compose([
-        Validators.required,
-        Validators.minLength(3)
-      ])],
       "birthday" : ['',Validators.required],
-      "contact" : [''],
+      "contact" : ['',Validators.pattern(/^\d{3}\d{3}\d{4}$/)],
       "bio" : [''],
-      "gender" : [''],
-      "relationship" : ['']
+      "gender" : ['',Validators.required],
+      "relationship" : ['',Validators.required]
     });
+  }
+
+  editBirthday(){
+    this.editBirthdate = false;
   }
 
   onSubmit(){
@@ -48,6 +52,16 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit() {
+  //   this.options_gender = [{
+  //     name: '12Male',
+  //     value: '12Male'
+  //  }, {
+  //     name: '12Female',
+  //     value: '12Female'
+  //  }];
+  //  this.editprofileForm = this.fb.group({
+  //   gender: ['Male12']
+  // });
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../../core/services/api.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { JwtService } from '../../core/services/jwt.service';
 
 @Component({
   selector: 'app-newsfeed',
@@ -9,11 +10,13 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   styleUrls: ['./newsfeed.component.css']
 })
 export class NewsfeedComponent implements OnInit {
+  loggedInUser : string;
   tweetForm : FormGroup;
   newtweet : Object;
   constructor(fb : FormBuilder,
               private apiservice : ApiService,
-              private spinnerservice : Ng4LoadingSpinnerService)
+              private spinnerservice : Ng4LoadingSpinnerService,
+              private jwtservice : JwtService)
   {
     this.tweetForm = fb.group({
       "tweetdata" : ['',Validators.required]
@@ -21,13 +24,15 @@ export class NewsfeedComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loggedInUser=this.jwtservice.getUsername();
+    console.log(this.loggedInUser+' in newsfeed');
   }
   onSubmit(){
     this.newtweet = {
-      tweet : this.tweetForm.value
+      body : this.tweetForm.value.tweetdata
     };
     //console.log(JSON.stringify(this.newtweet)+"Tweet data posted successfully");
-    //console.log(this.newtweet);
+    console.log(this.newtweet);
     this.apiservice.newTweetRequest(this.newtweet)
     .subscribe(
       (response) => {

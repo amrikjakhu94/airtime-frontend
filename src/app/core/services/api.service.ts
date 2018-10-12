@@ -3,7 +3,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JwtService } from './jwt.service';
 import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
+let httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'Bearer ' + window.localStorage.getItem('jwtToken')
+  })
+};
+//headers.append('Content-Type', 'application/json; charset=utf-8');
+//headers.append('Authorization', 'Bearer ' + this.storage.get(this.config.token.keyID));
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +38,7 @@ export class ApiService {
   }
 
   editProfileRequest(editProfile:Object){
-    return this.http.post('https://airtime-api.herokuapp.com/api/users/signup',editProfile);
+    return this.http.put('https://airtime-api.herokuapp.com/api/users/signup',editProfile,httpOptions);
   }
 
   isAuthenticated(){
@@ -42,7 +51,10 @@ export class ApiService {
   }
 
   newTweetRequest(newTweet:Object):Observable<any>{
-    return this.http.get('https://airtime-api.herokuapp.com/api/users/<username>/tweets');
+    return this.http.post('https://airtime-api.herokuapp.com/api/tweets/create',{ tweet:newTweet }, httpOptions);
+  }
+  add(photo : Object){
+    console.log('Enter photo service', photo);
   }
 
 }

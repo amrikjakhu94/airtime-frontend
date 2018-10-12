@@ -24,6 +24,9 @@
           <div class="top-header-thumb">
             <img src="../../../assets/img/top-header1.jpg" alt="nature">
           </div>
+          <div style="text-align:right; margin-top: -50px;">
+            <ngx-cropper [config]="coverPhoto" (returnData)="onReturnCoverPhoto($event)"></ngx-cropper>
+          </div>
             <!-- <input type="file" (change)="onFileSelected($event)" />
             <button type="button" [disabled]="!fileIsSelected" (click)="onUpload()" >Upload</button> -->
           <div class="profile-section">
@@ -57,11 +60,14 @@
             </div>
           </div>
           <div class="top-header-author">
-            <a href="02-ProfilePage.html" class="author-thumb">
+            <div class="author-thumb">
               <img src="../../../assets/img/author-main1.jpg" alt="author">
-            </a>
+            </div>
+            <div>
+              <ngx-cropper [config]="profilePhoto" (returnData)="onReturnProfilePhoto($event)"></ngx-cropper>
+            </div>
             <div class="author-content">
-              <a href="02-ProfilePage.html" class="h4 author-name">James Spiegel</a>
+              <a class="h4 author-name">James Spiegel</a>
               <div class="country">San Francisco, CA</div>
             </div>
           </div>

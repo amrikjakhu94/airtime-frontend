@@ -18,6 +18,7 @@ export class WelcomepageComponent implements OnInit {
   data$ : Object;
   loginData:Object;
   display : boolean = false;
+  email: { user: any; };
 
   constructor(private apiService : ApiService,
               private fb : FormBuilder,
@@ -37,6 +38,7 @@ export class WelcomepageComponent implements OnInit {
   }
 
   onSubmit() {
+    let tk,user;
     this.spinnerService.show();
     // TODO: Use EventEmitter with form value
     // this.spinnerService.show();
@@ -48,16 +50,20 @@ export class WelcomepageComponent implements OnInit {
     this.loginData = {
       user:this.loginForm.value
     };
-
+    this.email = {
+      user:this.loginForm.value.email
+    };
+    //console.log(this.email);
     //console.log(this.loginData);
     this.apiService.signInRequest(this.loginData)
       .subscribe(
         // (response) => console.log(response),
         (response) => {
+          console.log(response);
           const token = response['user']['token'];
           const username = response['user']['username'];
-          console.log(username);
           this.jwtservice.saveToken(token);
+          this.jwtservice.saveUsername(username); // Saving username in localStorage
           this.router.navigate(['/index']);
           this.spinnerService.hide();
         },

@@ -1,7 +1,7 @@
 <div>
   <div class="data">
     <div class="row">
-      <div class="col col-xs-2 col-md-6 left-col">
+      <div class="col col-xs-2 col-md-6 left-col mt-md-0 mt-3">
         <div class="left-col-data">
           <ul>
             <li>
@@ -18,7 +18,7 @@
       </div> <!-- Left col-md-6 ends -->
 
       <!-- Right column -->
-        <div class="col col col-xs-2 col-md-6 right-col">
+        <div class="col col col-xs-2 col-md-6 right-col mt-md-0 mt-3">
           <div class="row"> <!-- Login content starts -->
             <div class="col col col-xs-6 col-md-12 right-col-form"> <!-- Column col-12 starts -->
               <!-- Form starts here -->
@@ -26,13 +26,13 @@
                   <div class="row">
                     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-group" method="POST">
                       <div class="form-row">
-                        <div class="col col-xs-2 col-md-4">
+                        <div class="col col-xs-2 col-md-4 mt-md-0 mt-3">
                           <input type="text" formControlName="email" class="form-control placeholder-size" name="email" placeholder="Phone number,email address"/>
                         </div>
-                        <div class="col col-xs-2 col-md-4">
+                        <div class="col col-xs-2 col-md-4 mt-md-0 mt-3">
                           <input type="password" formControlName="password" class="form-control placeholder-size" name="password" placeholder="Password"/>
                         </div>
-                        <div class="col col-xs-1 col-md-2">
+                        <div class="col col-xs-1 col-md-2 mt-md-0 mt-3">
                           <button type="submit"[disabled]="!loginForm.valid" routerLinkActive="active" class="form-control login-btn" name="login" >Login</button>
                         </div>
                       </div>
@@ -40,9 +40,9 @@
 
                   </div>
                   <div class="row">
-                    <div class="col col-xs-2 col-md-5">
+                    <div class="col col-xs-2 col-md-5 mt-md-0 mt-3">
                     </div>
-                    <div class="col col-xs-2 col-md-5">
+                    <div class="col col-xs-2 col-md-5 mt-md-0 mt-3">
                       <div class="forgot-password">
                         <a routerLink="/passwordreset" routerLinkActive="active">Forgot password?</a>
                       </div>
@@ -54,7 +54,7 @@
           </div> <!-- Login content ends -->
 
           <div class="row">
-            <div class="col col-xs-6 col-md-12 right-col-data">
+            <div class="col col-xs-6 col-md-12 right-col-data mt-md-0 mt-3">
               <div class="row">
                 <div class="col col-xs-6 col-md-12 top-data">
                   <img src="../../assets/img/airtime.png" alt="twitter" style="max-height:60px;" />
@@ -65,15 +65,15 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col col-xs-6 col-md-12 middle-data">
+                <div class="col col-xs-6 col-md-12 middle-data mt-md-0 mt-3">
                   Join airtime today.
                 </div>
               </div>
               <hr>
               <div class="row">
-                <div class="col col-xs-6 col-md-12 bottom-data">
+                <div class="col col-xs-6 col-md-12 bottom-data mt-md-0 mt-3">
                   <div class="row">
-                    <div class="col col-xs-6 col-md-12">
+                    <div class="col col-xs-6 col-md-12 mt-md-0 mt-3">
                       <button routerLink="/signup" type="button" class="btn btn-signup">
                         Sign Up
                       </button>

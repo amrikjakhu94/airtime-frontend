@@ -9,6 +9,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  loggedInUser : string;
   username:string;
   constructor(private jwtservice : JwtService,
               private router : Router,
@@ -32,6 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loggedInUser=this.jwtservice.getUsername();
   }
 
 }

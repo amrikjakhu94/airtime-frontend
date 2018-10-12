@@ -4,3 +4,4 @@
 @import "assets/css/bootstrap-grid.css";
 @import "assets/css/theme-styles.css";
 @import "assets/css/blocks.css";
+@import '~ngx-cropper/lib/cropperjs.css';

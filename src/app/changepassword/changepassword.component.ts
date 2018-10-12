@@ -37,10 +37,11 @@ export class ChangepasswordComponent implements OnInit {
     {
       validator: ChangepasswordValidator.validate.bind(this)
     });
-      
+
   }
   onSubmit(){
     console.log(this.changePasswordForm.value);
+
   }
   ngOnInit() {
   }

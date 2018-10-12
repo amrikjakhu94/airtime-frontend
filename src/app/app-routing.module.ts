@@ -10,7 +10,8 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
 import { NotificationsComponent } from './indexpage/notifications/notifications.component';
 import { MessagesComponent } from './indexpage/messages/messages.component';
 import { AuthGuard } from './core/services/auth-guard.service';
-import { ProfileComponent } from './profile/profile.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -22,7 +23,9 @@ const routes: Routes = [
   { path:'settings' , component: SettingsComponent,canActivate: [AuthGuard] },
   { path:'changepassword' , component: ChangepasswordComponent,canActivate: [AuthGuard] },
   { path:'notifications' , component: NotificationsComponent,canActivate: [AuthGuard] },
-  { path:'messages' , component: MessagesComponent,canActivate: [AuthGuard] }
+  { path:'messages' , component: MessagesComponent,canActivate: [AuthGuard] },
+  { path:'aboutus' , component: AboutusComponent },
+  { path:'contactus' , component: ContactusComponent }
 ];
 
 @NgModule({
