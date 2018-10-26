@@ -55,12 +55,13 @@ export class WelcomepageComponent implements OnInit {
     };
     //console.log(this.email);
     //console.log(this.loginData);
-    this.apiService.signInRequest(this.loginData)
+    this.apiService.signInRequest(this.loginForm.value)
+    //this.apiService.signInRequest(this.loginData)
       .subscribe(
         // (response) => console.log(response),
         (response) => {
           console.log(response);
-          const token = response['user']['token'];
+          const token = response['token'];
           const username = response['user']['username'];
           this.jwtservice.saveToken(token);
           this.jwtservice.saveUsername(username); // Saving username in localStorage

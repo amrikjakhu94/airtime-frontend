@@ -10,44 +10,77 @@ import { JwtService } from '../../core/services/jwt.service';
   styleUrls: ['./newsfeed.component.css']
 })
 export class NewsfeedComponent implements OnInit {
-  loggedInUser : string;
+  loggedInUser : String;
   tweetForm : FormGroup;
-  newtweet : Object;
-  constructor(fb : FormBuilder,
-              private apiservice : ApiService,
-              private spinnerservice : Ng4LoadingSpinnerService,
-              private jwtservice : JwtService)
-  {
-    this.tweetForm = fb.group({
-      "tweetdata" : ['',Validators.required]
-    })
+  tweet : Object;
+  tweetdata : String;
+  loggedInToken: String;
+  display : boolean = false;
+  showlikedby : boolean = false;
+  newsfeedTweets : any;
+  likedByNames : any = [];
+    constructor(fb : FormBuilder,
+                private apiService : ApiService,
+                private spinnerService : Ng4LoadingSpinnerService,
+                private jwtService : JwtService){
+
+      this.tweetForm = fb.group({
+        "tweetdata" : ['',Validators.required]
+      });
+
+    }
+  getNewsfeed(){
+    this.apiService.getNewsfeed().subscribe(
+      (newsfeed) => {
+        if(newsfeed){
+          this.newsfeedTweets = newsfeed['tweetData'];
+          console.log(this.newsfeedTweets);
+        }
+      }
+    )
   }
 
-  ngOnInit() {
-    this.loggedInUser=this.jwtservice.getUsername();
-    console.log(this.loggedInUser+' in newsfeed');
+  getlikedBy(likedBy : any){
+    console.log(likedBy);
+      for(let i=0;i<likedBy.length;i++){
+        this.likedByNames.push(likedBy[i].firstname +' '+likedBy[i].lastname );
+      }
+      this.showlikedbyDialog();
+      console.log(this.likedByNames);
   }
+  ngOnInit() {
+    this.getNewsfeed();
+  }
+
   onSubmit(){
-    this.newtweet = {
-      body : this.tweetForm.value.tweetdata
+    this.tweet = {
+        tweetdata : this.tweetForm.value.tweetdata
     };
-    //console.log(JSON.stringify(this.newtweet)+"Tweet data posted successfully");
-    console.log(this.newtweet);
-    this.apiservice.newTweetRequest(this.newtweet)
+    this.tweetdata = this.tweetForm.value.tweetdata;
+    console.log(this.tweet);
+    this.apiService.newTweetRequest(this.tweet)
     .subscribe(
       (response) => {
-        this.spinnerservice.show();
+        this.shownewtweetDialog();
+        this.spinnerService.show();
         console.log(response);
-        // const email = response.email;
-        // this.showsignupDialog(email);
-        this.spinnerservice.hide();
+        this.spinnerService.hide();
       },
       (error) => {
-        this.spinnerservice.show();
-        console.log(error+'Error occured');
-        this.spinnerservice.hide();
+        this.spinnerService.show();
+        console.log(error+'Error occured12');
+        this.spinnerService.hide();
       }
   );
     this.tweetForm.reset();
   }
+
+  shownewtweetDialog(){
+    this.display = true;
+  }
+
+  showlikedbyDialog(){
+    this.showlikedby = true;
+  }
+
 }

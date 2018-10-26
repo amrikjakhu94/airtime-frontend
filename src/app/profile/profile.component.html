@@ -34,7 +34,7 @@
               <div class="col-lg-5 col-md-5 ">
                 <ul class="profile-menu">
                   <li>
-                    <a routerLink="/profile/tweets">Tweets</a>
+                    <a routerLink="/profile/tweets">Tweets[{{ profileData?.tweets.length }}]</a>
                   </li>
                   <li>
                     <a routerLink="/profile/likes">Likes</a>
@@ -47,10 +47,10 @@
               <div class="col-lg-5 ml-auto col-md-5">
                 <ul class="profile-menu">
                   <li>
-                    <a routerLink="/profile/followers">Followers</a>
+                    <a routerLink="/profile/followers">Followers[{{ profileData?.followersCount }}]</a>
                   </li>
                   <li>
-                    <a routerLink="/profile/following">Following</a>
+                    <a routerLink="/profile/following">Following[{{ profileData?.followingCount }}]</a>
                   </li>
                   <li>
                     <a [routerLink]="['/settings']">Edit Profile</a>
@@ -67,7 +67,7 @@
               <ngx-cropper [config]="profilePhoto" (returnData)="onReturnProfilePhoto($event)"></ngx-cropper>
             </div>
             <div class="author-content">
-              <a class="h4 author-name">James Spiegel</a>
+              <a class="h4 author-name">{{ profileData?.firstname }} {{ profileData?.lastname }}</a>
               <div class="country">San Francisco, CA</div>
             </div>
           </div>
@@ -103,7 +103,7 @@
         <ul class="widget w-personal-info item-block">
           <li>
             <span class="title">About Me:</span>
-            <span class="text">Hi, I’m James, I’m 36 and I work as a Digital Designer for the  “Daydreams” Agency in Pier 56.</span>
+            <span class="text">{{ profileData?.bio }}</span>
           </li>
           <li>
             <span class="title">Favourite TV Shows:</span>

@@ -1,16 +1,18 @@
 <div id="newsfeed-items-grid" >
-  {{ tweets }}
-  <div class="ui-block">
+  <!-- <div *ngFor="let tweet of tweets?.tweets">
+    {{ tweet.firstname }}
+  </div> -->
+  <div class="ui-block" *ngFor="let tweet of tweets">
     <article class="hentry post has-post-thumbnail">
 
       <div class="post__author author vcard inline-items">
         <img src="../../../assets/img/avatar3-sm.jpg" alt="author">
 
         <div class="author-date">
-          <a class="h6 post__author-name fn" href="#">Lorem ipsum</a>
+          <a class="h6 post__author-name fn">{{ tweet.user.firstname }} {{ tweet.user.lastname }}</a>
           <div class="post__date">
             <time class="published" datetime="2004-07-24T18:18">
-              March 2 at 9:06am
+                {{ tweet.createdAt | date:'MMM dd yyyy , h:mm a' }}
             </time>
           </div>
         </div>
@@ -18,10 +20,10 @@
         <div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-three-dots-icon"></use></svg>
           <ul class="more-dropdown">
             <li>
-              <a href="#">Edit Post</a>
+              <a (click)="edittweet(tweet._id)">Edit Post</a>
             </li>
             <li>
-              <a href="#">Delete Post</a>
+              <a (click)="deletetweet(tweet._id)">Delete Post</a>
             </li>
             <li>
               <a href="#">Turn Off Notifications</a>
@@ -34,16 +36,14 @@
 
       </div>
 
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.
+      <p>{{ tweet.body }}
       </p>
 
       <div class="post-additional-info inline-items">
 
-        <a href="#" class="post-add-icon inline-items">
+        <a class="post-add-icon inline-items">
           <svg class="olymp-heart-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-heart-icon"></use></svg>
-          <span>0 Likes</span>
+          <a (click)="getlikedBy(tweet.likedBy)"><span>{{tweet.likesCount}} Likes</span></a>
         </a>
 
         <div class="comments-shared">
@@ -61,3 +61,42 @@
     </article>
   </div>
 </div>
+
+<p-dialog header="Edit your post" [(visible)]="display" [modal]="true"
+[responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+[maximizable]="false" [baseZIndex]="10000">
+
+<div>
+    <form [formGroup]="editTweetForm" (ngSubmit)="onSubmit()" class="form-group" method="POST">
+
+      <div class="form-group">
+        <textarea formControlName="body" class="form-control" placeholder=""></textarea>
+      </div>
+      <div class="add-options-message">
+
+        <button type="submit" [disabled]="!editTweetForm.valid" class="btn btn-primary btn-md-2">Edit done</button>
+
+      </div>
+
+    </form>
+</div>
+
+</p-dialog>
+
+<p-dialog header="Liked by :" [(visible)]="showlikedby" [modal]="true"
+[responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+[maximizable]="false" [baseZIndex]="10000">
+
+<div>
+  <ul>
+    <li *ngFor="let liked of likedByNames">
+      {{ liked }}
+    </li>
+  </ul>
+
+</div>
+<p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="showlikedby=false; likedByNames=[]" label="Done"></button>
+  </p-footer>
+
+</p-dialog>

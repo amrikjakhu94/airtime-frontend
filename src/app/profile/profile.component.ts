@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CropperOption } from 'ngx-cropper';
+import { ApiService } from '../core/services/api.service';
 
 const URL = 'http://localhost:3000/api/upload';
 
@@ -21,9 +22,9 @@ export class ProfileComponent implements OnInit {
   cropperReady = false;
   public httpCall: any = false;
   baseImage: Blob;
+  profileData : Object;
 
-
-  constructor(private http : HttpClient,private fb: FormBuilder) {
+  constructor(private http : HttpClient,private fb: FormBuilder,private apiService : ApiService) {
     this.imageUpload = fb.group({
       filename: [{ value: '', disabled: true }]
     });
@@ -221,6 +222,15 @@ export class ProfileComponent implements OnInit {
       })
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.apiService.getProfile().
+      subscribe(
+        res => {
+          console.log(res);
+          this.apiService.sendProfileData(res);
+          this.profileData = res;
+        }  
+      )
+  }
 
 }

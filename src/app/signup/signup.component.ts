@@ -63,7 +63,7 @@ export class SignupComponent implements OnInit {
       user : this.signupForm.value
     };
     console.log(this.signupData);
-    this.apiService.signUpRequest(this.signupData)
+    this.apiService.signUpRequest(this.signupForm.value)
       .subscribe(
         (response) => {
           this.spinnerService.show();

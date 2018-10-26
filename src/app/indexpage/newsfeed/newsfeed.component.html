@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <div id="newsfeed-items-grid">
+      <div *ngFor="let newsfeed of newsfeedTweets" id="newsfeed-items-grid">
         <div class="ui-block">
           <article class="hentry post has-post-thumbnail">
 
@@ -41,22 +41,22 @@
               <img src="../../../assets/img/avatar3-sm.jpg" alt="author">
 
               <div class="author-date">
-                <a class="h6 post__author-name fn">1-Sarah Hetfield</a>
+                <a class="h6 post__author-name fn">{{ newsfeed.user.firstname }} {{ newsfeed.user.lastname }}</a>
                 <div class="post__date">
                   <time class="published" datetime="2004-07-24T18:18">
-                    March 2 at 9:06am
+                      {{ newsfeed.createdAt | date:'MMM dd yyyy , h:mm a' }}
                   </time>
                 </div>
               </div>
 
               <div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-three-dots-icon"></use></svg>
                 <ul class="more-dropdown">
-                  <li>
+                  <!-- <li>
                     <a>Edit Post</a>
                   </li>
                   <li>
                     <a>Delete Post</a>
-                  </li>
+                  </li> -->
                   <li>
                     <a>Turn Off Notifications</a>
                   </li>
@@ -68,16 +68,14 @@
 
             </div>
 
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.
+            <p>{{ newsfeed.body }}
             </p>
 
             <div class="post-additional-info inline-items">
 
               <a class="post-add-icon inline-items">
                 <svg class="olymp-heart-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-heart-icon"></use></svg>
-                <span>0 Likes</span>
+                <a (click)="getlikedBy(newsfeed.likedBy)"><span>{{ newsfeed.likesCount }} Likes</span></a>
               </a>
 
               <div class="comments-shared">
@@ -93,8 +91,8 @@
               </div>
 
             </div>
-
           </article>
+
         </div>
 
 
@@ -122,3 +120,31 @@
     </aside>
     <!-- ... end Right Sidebar -->
   </div>
+
+  <p-dialog header="Tweet posted successfully" [(visible)]="display" [modal]="true"
+  [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+  [maximizable]="false" [baseZIndex]="10000">
+
+  <div>
+    <p>{{ this.tweetdata }} posted on your timeline</p>
+  </div>
+
+</p-dialog>
+
+<p-dialog header="Liked by :" [(visible)]="showlikedby" [modal]="true"
+[responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+[maximizable]="false" [baseZIndex]="10000">
+
+<div>
+  <ul>
+    <li *ngFor="let liked of likedByNames">
+      {{ liked }}
+    </li>
+  </ul>
+
+</div>
+<p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="showlikedby=false; likedByNames=[]" label="Done"></button>
+  </p-footer>
+
+</p-dialog>

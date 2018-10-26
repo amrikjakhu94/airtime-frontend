@@ -4,6 +4,9 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { TrendingComponent } from './trending/trending.component';
 import { FollowSuggestionsComponent } from './follow-suggestions/follow-suggestions.component';
+import { CommonModule } from '@angular/common';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
     declarations: [
@@ -13,7 +16,10 @@ import { FollowSuggestionsComponent } from './follow-suggestions/follow-suggesti
     FollowSuggestionsComponent
     ],
     imports: [
-      [RouterModule]
+      RouterModule,
+      CommonModule,
+      DialogModule,
+      ButtonModule
     ],
     exports:[
         HeaderComponent,

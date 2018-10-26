@@ -9,11 +9,14 @@ import { ApiService } from '../core/services/api.service';
 })
 export class SettingsComponent implements OnInit {
   editprofileForm : FormGroup;
-  editprofileData : Object;
+  editedProfileData : Object;
   options_gender : any;
   editBirthdate : boolean = true;
   genders = ['Male','Female'];
   relationships = ['Single','Married','Divorce','Widow'];
+  userDetails: Object;
+  profileUpdated: Object;
+  display: boolean = false;
 
   constructor(private apiService : ApiService,private fb : FormBuilder){
     this.editprofileForm = fb.group({
@@ -25,6 +28,8 @@ export class SettingsComponent implements OnInit {
         Validators.required,
         Validators.minLength(3)
       ])],
+      "email" : [''],
+      "username" : [''],
       "birthday" : ['',Validators.required],
       "contact" : ['',Validators.pattern(/^\d{3}\d{3}\d{4}$/)],
       "bio" : [''],
@@ -38,30 +43,34 @@ export class SettingsComponent implements OnInit {
   }
 
   onSubmit(){
-    //console.log(this.signupForm.value);
-    //console.log(JSON.stringify(this.signupForm.value)+"Form submitted successfully");
-    this.editprofileData = {
+    this.editedProfileData = {
       user : this.editprofileForm.value
     };
-    console.log(this.editprofileData);
-    this.apiService.editProfileRequest(this.editprofileData)
+    console.log(this.editprofileForm.value);
+    this.apiService.editedProfileData(this.editprofileForm.value)
       .subscribe(
-        (response) => console.log(response),
-        (error) => console.log(error+'Error occured')
+        (response) => {
+          this.profileUpdated = response;
+          console.log(response);
+          this.showupdatedDialog();
+          return;
+        },
+        (error) => {
+          console.log(error+'Error occured')
+        }  
     );
   }
-
+  showupdatedDialog(){
+    this.display = true;
+  }
   ngOnInit() {
-  //   this.options_gender = [{
-  //     name: '12Male',
-  //     value: '12Male'
-  //  }, {
-  //     name: '12Female',
-  //     value: '12Female'
-  //  }];
-  //  this.editprofileForm = this.fb.group({
-  //   gender: ['Male12']
-  // });
+    this.apiService.editProfileRequest()
+      .subscribe(
+        (response) => {
+          this.userDetails = response['user'];
+          this.editprofileForm.patchValue(this.userDetails)
+        }
+      )
   }
 
 }

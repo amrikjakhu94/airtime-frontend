@@ -6,24 +6,20 @@
                 </div>
         
                 <ul class="notification-list friend-requests">
-                  <li>
+                  <li *ngFor="let following of followingData">
                     <div class="author-thumb">
                       <img src="../../../assets/img/avatar15-sm.jpg" alt="author">
                     </div>
                     <div class="notification-event">
-                      <a href="#" class="h6 notification-friend">Tamara Romanoff</a>
+                      <a href="#" class="h6 notification-friend">{{ following.firstname }} {{ following.lastname }}</a>
                       <span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
                     </div>
                     <span class="notification-icon">
-                      <a href="#" class="accept-request">
-                        Unfollow
+                      <a (click)="unfollow(following._id)" class="accept-request">
+                          Unfollow
                       </a>
                     </span>
-        
-                    <div class="more">
-                      <svg class="olymp-three-dots-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-                      <svg class="olymp-little-delete"><use xlink:href="../../../assets/icons/icons.svg#olymp-little-delete"></use></svg>
-                    </div>
+
                   </li>
                 </ul>
         
@@ -31,3 +27,15 @@
         </div>
     
       <!-- ... end Main Content -->
+      <p-dialog header="Unfollow success" [(visible)]="display" [modal]="true"
+        [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+        [maximizable]="false" [baseZIndex]="10000">
+
+        <div>
+          <p>You unfollowed {{ unfollowName }} now</p>
+        </div>
+
+        <p-footer>
+          <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Done"></button>
+        </p-footer>
+      </p-dialog>

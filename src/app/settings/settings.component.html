@@ -35,7 +35,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <input class="form-control" placeholder="" type="email" value="abc@mail.com" disabled>
+                  <input formControlName="email" class="form-control" placeholder="" type="email" value="abc@mail.com" disabled>
                 </div>
 
                 <div class="row">
@@ -74,7 +74,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <input class="form-control" placeholder="" type="text" value="@abc" disabled />
+                  <input formControlName="username" class="form-control" placeholder="" type="text" value="@abc" disabled />
                 </div>
 
                 <div class="row">
@@ -148,9 +148,9 @@
               </div>
               
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <button class="btn btn-secondary btn-lg full-width">Restore all Attributes</button>
+                <!-- <button class="btn btn-secondary btn-lg full-width">Restore all Attributes</button> -->
               </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
                 <button type="submit" [disabled]="!editprofileForm.valid" class="btn btn-primary btn-lg full-width">Save all Changes</button>
               </div>
 
@@ -197,3 +197,13 @@
 </div>
   
   <!-- ... end Your Account Personal Information -->
+
+  <p-dialog header="Profile updated" [(visible)]="display" [modal]="true"
+  [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+  [maximizable]="false" [baseZIndex]="10000">
+
+  <div>
+    <p>Profile updated successfully</p>
+  </div>
+
+</p-dialog>
