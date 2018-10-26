@@ -40,7 +40,7 @@
         </form>
         <ul class="navbar-nav" style="text-align:right">
           <li class="nav-item active">
-            <a title="Find friends" (click)="findFriends()" class="nav-link" ><i class="fas fa-user-friends"></i></a>
+            <a routerLink="/findfriends" title="Find friends" class="nav-link" ><i class="fas fa-user-friends"></i></a>
           </li>
           <li class="nav-item active">
             <a routerLink="/profile" class="nav-link" ><i class=" nav-icon fa fa-user-circle"></i>{{ loggedInUser?.username }} <span class="sr-only">(current)</span></a>

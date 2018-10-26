@@ -222,15 +222,22 @@ export class ProfileComponent implements OnInit {
       })
   }
 
-  ngOnInit() {
+  getProfileData(){
     this.apiService.getProfile().
-      subscribe(
-        res => {
-          console.log(res);
-          this.apiService.sendProfileData(res);
-          this.profileData = res;
-        }  
-      )
+    subscribe(
+      res => {
+        console.log(res);
+        this.apiService.sendProfileData(res);
+        this.apiService.getProfileData().subscribe(ddt => {
+          this.profileData = ddt;
+        });
+        
+      }  
+    );
+  }
+
+  ngOnInit() {
+    this.getProfileData();
   }
 
 }

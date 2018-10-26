@@ -1,0 +1,73 @@
+<app-header></app-header>
+<br/>
+
+<div class="container">
+  <div class="row">
+    <!-- Main Content -->
+    <main class="col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-xs-12">
+      <div id="newsfeed-items-grid">
+          <div class="ui-block">
+              <div class="ui-block-title">
+                  <h6 class="title">Find friends</h6>
+                  <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                </div>
+        
+                <ul class="notification-list friend-requests">
+                    <li *ngFor="let findfriend of findFriendsList">
+                      <div class="author-thumb">
+                        <img src="../../../assets/img/avatar15-sm.jpg" alt="author">
+                      </div>
+                      <div class="notification-event">
+                        <a href="#" class="h6 notification-friend">{{ findfriend.firstname }} {{ findfriend.lastname }}</a>
+                        <span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
+                      </div>
+                      <span class="notification-icon">
+                        <a (click)="follow(findfriend._id)" class="accept-request">
+                            Follow
+                        </a>
+                      </span>
+  
+                    </li>
+                  </ul>
+      
+            </div>
+      </div>
+
+
+      <a id="load-more-button" href="#" class="btn btn-control btn-more" data-load-link="items-to-load.html" data-container="newsfeed-items-grid"><svg class="olymp-three-dots-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
+
+
+    </main>
+
+    <!-- ... end Main Content -->
+
+
+    <!-- Left Sidebar -->
+    <aside class="col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-12 col-xs-12">
+      <app-trending></app-trending>
+    </aside>
+    <!-- ... end Left Sidebar -->
+
+        <!-- Right Sidebar -->
+
+        <aside class="col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-12 col-xs-12">
+          <app-follow-suggestions></app-follow-suggestions>
+        </aside>
+            
+                <!-- ... end Right Sidebar -->
+
+  </div>
+</div>
+
+<p-dialog header="Following" [(visible)]="display" [modal]="true"
+[responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+[maximizable]="false" [baseZIndex]="10000">
+
+<div>
+  <p>You are now following {{ followName }}.</p>
+</div>
+
+<p-footer>
+  <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Followed"></button>
+</p-footer>
+</p-dialog>

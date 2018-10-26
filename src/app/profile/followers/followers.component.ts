@@ -8,21 +8,35 @@ import { ApiService } from '../../core/services/api.service';
 })
 export class FollowersComponent implements OnInit {
   followersData : any;
+  profileData: Object;
   constructor(private apiService : ApiService) { }
 
   getFollowers(){
-    this.apiService.getFollowersList().subscribe(
-      (followers)=> {
-        this.followersData = followers['followers']
-      }
-    )
+    // this.apiService.getFollowersList().subscribe(
+    //   (followers)=> {
+    //     this.followersData = followers['followers']
+    //     console.log(this.followersData,'service');
+    //   }
+    // )
+    this.apiService.getProfileData().subscribe((data) => {
+      this.followersData = data.followers;
+
+      // this.apiService.getProfile().
+      // subscribe(
+      //   res => {
+      //     console.log(res);
+      //     this.apiService.sendProfileData(res);
+      //     this.profileData = res;
+      //   }  
+      // );
+
+      //console.log(this.followersData,'FROM behaviorSUBJECT');
+    });
   }
 
   ngOnInit() {
     this.getFollowers();
-    this.apiService.getProfileData().subscribe((data) => {
-      console.log(data,'FROM SUBJECT');
-    });
+
   }
 
 }

@@ -2,26 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../core/services/api.service';
 
 @Component({
-  selector: 'app-follow-suggestions',
-  templateUrl: './follow-suggestions.component.html',
-  styleUrls: ['./follow-suggestions.component.css']
+  selector: 'app-findfriends',
+  templateUrl: './findfriends.component.html',
+  styleUrls: ['./findfriends.component.css']
 })
-export class FollowSuggestionsComponent implements OnInit {
-  followsuggestions : Object;
-  followName : Object;
-  display : boolean = false;
+export class FindfriendsComponent implements OnInit {
+  frien
+  findFriendsList: any;
+  display: boolean = false;
+  followName: Object;
   profileData: Object;
-
   constructor(private apiService : ApiService) { }
 
-  getFollowSuggestions(){
-      this.apiService.getFollowSuggestions()
-    .subscribe(
-      (result) => {
-        this.followsuggestions = result;
-      },
-      (error)=>{
-        console.log('Error in getting follow suggestions');
+  findFriends(){
+    console.log('Find friends');
+    this.apiService.findFriends().subscribe(
+      (findfriends)=>{
+        this.findFriendsList = findfriends;
+        console.log(this.findFriendsList);
       }
     )
   }
@@ -31,7 +29,6 @@ export class FollowSuggestionsComponent implements OnInit {
       (follow)=>{
         this.followName = follow;
         this.showfollowDialog();
-        this.getFollowSuggestions();
         
         this.apiService.getProfile().
         subscribe(
@@ -51,7 +48,7 @@ export class FollowSuggestionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getFollowSuggestions();
+    this.findFriends();
   }
 
 }

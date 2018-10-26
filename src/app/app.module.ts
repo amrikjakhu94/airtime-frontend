@@ -5,9 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {DialogModule} from 'primeng/dialog';
-import {ButtonModule} from 'primeng/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 import { CropperModule } from 'ngx-cropper';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,7 @@ import { AuthGuard } from './core/services/auth-guard.service';
 import { JwtService } from './core/services/jwt.service';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { FindfriendsComponent } from './indexpage/findfriends/findfriends.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ContactusComponent } from './contactus/contactus.component';
     SettingsComponent,
     ChangepasswordComponent,
     NotificationsComponent,
+    FindfriendsComponent,
     MessagesComponent,
     AboutusComponent,
     ContactusComponent,

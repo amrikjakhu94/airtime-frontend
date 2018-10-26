@@ -35,16 +35,6 @@ export class HeaderComponent implements OnInit {
     this.spinnerService.hide();
   }
 
-  findFriends(){
-    console.log('Find friends');
-    this.apiService.findFriends().subscribe(
-      (findfriends)=>{
-        this.findFriendsList = findfriends;
-        console.log(this.findFriendsList);
-      }
-    )
-  }
-
   ngOnInit() {
     //this.loggedInUser=this.jwtservice.getUsername();
     this.apiService.getProfile().subscribe(
