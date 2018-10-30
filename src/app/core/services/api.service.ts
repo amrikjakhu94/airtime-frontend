@@ -94,6 +94,16 @@ export class ApiService {
     return this.token != null;
   }
 
+  likeTweet(id:String){
+    let httpOptions = this.gethttpOptions();
+    return this.http.get(`http://localhost:3000/liketweet/${id}`, httpOptions);
+  }
+
+  dislikeTweet(id:String){
+    let httpOptions = this.gethttpOptions();
+    return this.http.get(`http://localhost:3000/disliketweet/${id}`, httpOptions);
+  }
+
   deleteTweet(id:String){
     let httpOptions = this.gethttpOptions();
     return this.http.delete(`http://localhost:3000/deletetweet/${id}`, httpOptions);
@@ -129,9 +139,9 @@ export class ApiService {
     console.log('Enter photo service', photo);
   }
 
-  getNewsfeed(){
+  getNewsfeed(pageno:number){
     let httpOptions = this.gethttpOptions();
-    return this.http.get('http://localhost:3000/getnewsfeed',httpOptions);
+    return this.http.get(`http://localhost:3000/getnewsfeed/${pageno}`,httpOptions);
   }
 
   getFollowSuggestions(){
@@ -157,6 +167,10 @@ export class ApiService {
   unfollow(id:String){
     let httpOptions = this.gethttpOptions();
     return this.http.get(`http://localhost:3000/unfollowrequest/${id}`,httpOptions);
+  }
+
+  forgotPasswordRequest(forgotPassword:Object){
+    return this.http.post('http://localhost:3000/forgotpassword',forgotPassword);
   }
 
 }

@@ -13,10 +13,13 @@ import { AuthGuard } from './core/services/auth-guard.service';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { FindfriendsComponent } from './indexpage/findfriends/findfriends.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { SetnewpasswordComponent } from './setnewpassword/setnewpassword.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path:'welcome' , component: WelcomepageComponent },
+  { path:'forgotpassword' , component: ForgotpasswordComponent },
   { path:'index' , component: IndexpageComponent,canActivate: [AuthGuard] },
   { path:'newsfeed' , component: NewsfeedComponent,canActivate: [AuthGuard] },
   { path:'findfriends' , component: FindfriendsComponent,canActivate: [AuthGuard] },
@@ -27,7 +30,8 @@ const routes: Routes = [
   { path:'notifications' , component: NotificationsComponent,canActivate: [AuthGuard] },
   { path:'messages' , component: MessagesComponent,canActivate: [AuthGuard] },
   { path:'aboutus' , component: AboutusComponent },
-  { path:'contactus' , component: ContactusComponent }
+  { path:'contactus' , component: ContactusComponent },
+  { path:'setnewpassword' , component: SetnewpasswordComponent }
 ];
 
 @NgModule({

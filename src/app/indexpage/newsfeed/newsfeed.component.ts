@@ -19,6 +19,11 @@ export class NewsfeedComponent implements OnInit {
   showlikedby : boolean = false;
   newsfeedTweets : any;
   likedByNames : any = [];
+
+  page: number = 1;
+  collection: any[] = this.newsfeedTweets;
+  totalTweets: number;
+
     constructor(fb : FormBuilder,
                 private apiService : ApiService,
                 private spinnerService : Ng4LoadingSpinnerService,
@@ -29,12 +34,19 @@ export class NewsfeedComponent implements OnInit {
       });
 
     }
+
+  setPageNo(page){
+    this.page=page;
+    this.getNewsfeed();
+  }
   getNewsfeed(){
-    this.apiService.getNewsfeed().subscribe(
+    this.apiService.getNewsfeed(this.page).subscribe(
       (newsfeed) => {
         if(newsfeed){
           this.newsfeedTweets = newsfeed['tweetData'];
+          //this.totalTweets = newsfeed;
           console.log(this.newsfeedTweets);
+          //console.log(this.totalTweets);
         }
       }
     )
@@ -47,9 +59,6 @@ export class NewsfeedComponent implements OnInit {
       }
       this.showlikedbyDialog();
       console.log(this.likedByNames);
-  }
-  ngOnInit() {
-    this.getNewsfeed();
   }
 
   onSubmit(){
@@ -81,6 +90,10 @@ export class NewsfeedComponent implements OnInit {
 
   showlikedbyDialog(){
     this.showlikedby = true;
+  }
+
+  ngOnInit() {
+    this.getNewsfeed();
   }
 
 }

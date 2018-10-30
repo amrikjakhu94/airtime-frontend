@@ -53,12 +53,8 @@ export class WelcomepageComponent implements OnInit {
     this.email = {
       user:this.loginForm.value.email
     };
-    //console.log(this.email);
-    //console.log(this.loginData);
     this.apiService.signInRequest(this.loginForm.value)
-    //this.apiService.signInRequest(this.loginData)
       .subscribe(
-        // (response) => console.log(response),
         (response) => {
           console.log(response);
           const token = response['token'];
@@ -69,7 +65,7 @@ export class WelcomepageComponent implements OnInit {
           this.spinnerService.hide();
         },
         (error) =>{
-          console.log(error+'Error occured')
+          console.log(error);
           this.showErrorDialog();
           this.spinnerService.hide();
           this.loginForm.reset();

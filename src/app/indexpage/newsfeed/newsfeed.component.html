@@ -121,6 +121,28 @@
     <!-- ... end Right Sidebar -->
   </div>
 
+<nav aria-label="Page navigation example" style="color:black;">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" (click)="setPageNo(1)">1</a></li>
+    <li class="page-item"><a class="page-link" (click)="setPageNo(2)">2</a></li>
+    <li class="page-item"><a class="page-link" (click)="setPageNo(3)">3</a></li>
+    <li class="page-item"><a class="page-link" (click)="setPageNo(4)">4</a></li>
+    <li class="page-item">
+      <a class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>
+  
+  <!-- <ul>
+    <li *ngFor="let item of collection | paginate: { itemsPerPage: 2, currentPage: p }"> ... </li>
+  </ul>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+
+
   <p-dialog header="Tweet posted successfully" [(visible)]="display" [modal]="true"
   [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
   [maximizable]="false" [baseZIndex]="10000">

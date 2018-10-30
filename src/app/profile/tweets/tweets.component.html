@@ -2,17 +2,17 @@
   <!-- <div *ngFor="let tweet of tweets?.tweets">
     {{ tweet.firstname }}
   </div> -->
-  <div class="ui-block" *ngFor="let tweet of tweets">
+  <div class="ui-block" *ngFor="let tweet of finalTweets">
     <article class="hentry post has-post-thumbnail">
 
       <div class="post__author author vcard inline-items">
         <img src="../../../assets/img/avatar3-sm.jpg" alt="author">
 
         <div class="author-date">
-          <a class="h6 post__author-name fn">{{ tweet.user.firstname }} {{ tweet.user.lastname }}</a>
+          <a class="h6 post__author-name fn">{{ tweet.tweet.user.firstname }} {{ tweet.tweet.user.lastname }}</a>
           <div class="post__date">
             <time class="published" datetime="2004-07-24T18:18">
-                {{ tweet.createdAt | date:'MMM dd yyyy , h:mm a' }}
+                {{ tweet.tweet.createdAt | date:'MMM dd yyyy , h:mm a' }}
             </time>
           </div>
         </div>
@@ -20,10 +20,10 @@
         <div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-three-dots-icon"></use></svg>
           <ul class="more-dropdown">
             <li>
-              <a (click)="edittweet(tweet._id)">Edit Post</a>
+              <a (click)="edittweet(tweet.tweet._id)">Edit Post</a>
             </li>
             <li>
-              <a (click)="deletetweet(tweet._id)">Delete Post</a>
+              <a (click)="deletetweet(tweet.tweet._id)">Delete Post</a>
             </li>
             <li>
               <a href="#">Turn Off Notifications</a>
@@ -36,19 +36,25 @@
 
       </div>
 
-      <p>{{ tweet.body }}
+      <p>{{ tweet.tweet.body }}
       </p>
-
+      
       <div class="post-additional-info inline-items">
-
-        <a class="post-add-icon inline-items">
-          <svg class="olymp-heart-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-heart-icon"></use></svg>
-          <a (click)="getlikedBy(tweet.likedBy)"><span>{{tweet.likesCount}} Likes</span></a>
-        </a>
-
+        <div *ngIf="tweet.isLikedByMe == 'true'; else notLiked">
+          <a class="post-add-icon inline-items">
+            <svg class="olymp-heart-icon" (click)="dislikeTweet(tweet.tweet._id)" style="background-color:red;" ><use xlink:href="../../../assets/icons/icons.svg#olymp-heart-icon"></use></svg>
+            <a (click)="getlikedBy(tweet.tweet.likedBy)"><span>{{tweet.tweet.likesCount}} Likes</span></a>
+          </a>
+        </div>
+        <ng-template #notLiked>
+          <a class="post-add-icon inline-items">
+            <svg class="olymp-heart-icon" (click)="likeTweet(tweet.tweet._id)"><use xlink:href="../../../assets/icons/icons.svg#olymp-heart-icon"></use></svg>
+            <a (click)="getlikedBy(tweet.tweet.likedBy)"><span>{{tweet.tweet.likesCount}} Likes</span></a>
+          </a>
+        </ng-template>
         <div class="comments-shared">
-          <a href="#" class="post-add-icon inline-items">
-            <svg class="olymp-speech-balloon-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
+          <a class="post-add-icon inline-items">
+            <svg class="olymp-speech-balloon-icon" (click)="likeTweet(tweet.tweet._id)" ><use xlink:href="../../../assets/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
             <span>0 Comments</span>
           </a>
 

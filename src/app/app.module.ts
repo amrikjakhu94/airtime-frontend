@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { CropperModule } from 'ngx-cropper';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,8 @@ import { JwtService } from './core/services/jwt.service';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { FindfriendsComponent } from './indexpage/findfriends/findfriends.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { SetnewpasswordComponent } from './setnewpassword/setnewpassword.component';
 
 
 @NgModule({
@@ -45,6 +48,8 @@ import { FindfriendsComponent } from './indexpage/findfriends/findfriends.compon
     MessagesComponent,
     AboutusComponent,
     ContactusComponent,
+    ForgotpasswordComponent,
+    SetnewpasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,8 @@ import { FindfriendsComponent } from './indexpage/findfriends/findfriends.compon
     BrowserModule,
     BrowserAnimationsModule,
     ButtonModule,
-    CropperModule
+    CropperModule,
+    NgxPaginationModule
   ],
   providers: [
     ConfigService,

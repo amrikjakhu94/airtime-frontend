@@ -3,6 +3,7 @@ import { ApiService } from '../../core/services/api.service';
 import { JwtService } from '../../core/services/jwt.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { element } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-tweets',
@@ -11,13 +12,16 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class TweetsComponent implements OnInit {
   loggedInUser: string;
-  tweets: Object;
+  tweets: any;
   display : boolean = false;
   editTweetForm : FormGroup;
   tweetData : Object;
   tweetId : String = '';
   likedByNames : any = [];
   showlikedby: boolean = false;
+  likes: any;
+  finalTweets: any = [];
+  likedByItself : Boolean = false;
 
   constructor(private apiService : ApiService,
               private jwtService : JwtService,
@@ -69,10 +73,44 @@ export class TweetsComponent implements OnInit {
   getTweets(){
     this.apiService.getMyTweets().subscribe(
       result => {
-        this.tweets = result;
-        console.log(this.tweets);
+        this.tweets = result['mytweets'];
+        this.loggedInUser = result['user'];
+        this.tweets.forEach(element=>{
+          this.likes = element['likedBy'];
+          for(let i=0;i<this.likes.length;i++){
+            this.likedByItself = this.loggedInUser == this.likes[i]._id;
+          }
+          if(this.likedByItself){
+            this.finalTweets.push({ tweet : element , isLikedByMe : 'true' })
+            //console.log('User liked its own post');
+          }
+          else{
+            this.finalTweets.push({ tweet : element , isLikedByMe : 'false' })
+          }
+        });
+        console.log(this.finalTweets);
       }
     );
+  }
+
+  likeTweet(id:String){
+    this.apiService.likeTweet(id).subscribe(
+      like=>{
+        console.log(like);
+        //this.finalTweets = [];
+        //this.getTweets();
+      }
+    )
+  }
+
+  dislikeTweet(id:String){
+    this.apiService.dislikeTweet(id).subscribe(
+      dislike=>{
+        console.log(dislike);
+        //this.finalTweets = [];
+        //this.getTweets();
+      }
+    )
   }
 
   getlikedBy(likedBy : any){
