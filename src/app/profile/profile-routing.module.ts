@@ -13,7 +13,8 @@ const profileRoutes : Routes = [
         path: '',
         component: ProfileComponent,
         children: [
-            { path: '', component : TweetsComponent, pathMatch: 'full' },
+            //{ path: '', component : TweetsComponent, pathMatch: 'full' },
+            { path : '' , component : TweetsComponent },
             { path : 'tweets' , component : TweetsComponent },
             { path : 'likes' , component : LikesComponent },
             { path : 'retweets' , component : RetweetsComponent },

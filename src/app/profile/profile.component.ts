@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CropperOption } from 'ngx-cropper';
 import { ApiService } from '../core/services/api.service';
+import { MessageService } from 'primeng/api';
 
 const URL = 'http://localhost:3000/api/upload';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers: [MessageService]
 })
 export class ProfileComponent implements OnInit {
   public coverPhoto: CropperOption;
@@ -24,10 +26,23 @@ export class ProfileComponent implements OnInit {
   baseImage: Blob;
   profileData : Object;
 
-  constructor(private http : HttpClient,private fb: FormBuilder,private apiService : ApiService) {
-    this.imageUpload = fb.group({
-      filename: [{ value: '', disabled: true }]
-    });
+  uploadedFiles: any[] = [];
+
+
+
+  afuConfig = {
+    uploadAPI: {
+      url:"http://localhost:3000/fileupload"
+    }
+  };
+
+  constructor(private http : HttpClient,
+    private messageService: MessageService,
+    private fb: FormBuilder,
+    private apiService : ApiService) {
+      this.imageUpload = fb.group({
+        filename: [{ value: '', disabled: true }]
+      });
 
     this.profilePhoto = {
       url: null, // image server url
@@ -69,6 +84,17 @@ export class ProfileComponent implements OnInit {
 
 
   }
+
+
+  onUploadFile(event : any) {
+    console.log('upload event in ts file.');
+    for(let file of event.files) {
+        this.uploadedFiles.push(file);
+    }
+
+    this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: 'File uploaded.'});
+  }
+
 
   // deal callback data of profile photo
   public onReturnCoverPhoto(data: any) {

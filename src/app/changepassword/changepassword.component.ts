@@ -35,8 +35,22 @@ export class ChangepasswordComponent implements OnInit {
       ])]
     },
     {
+      //passwordMatchValidator
       validator: ChangepasswordValidator.validate.bind(this)
     });
+
+    function passwordMatchValidator(g: FormGroup) {
+      return g.get('newpassword').value == g.get('confirmnewpassword').value
+         ? null : {'doesMatchPassword': true};
+      // let p = g.get('newpassword').value;
+      // let cp = g.get('confirmnewpassword').value;
+      //   if(p == cp){
+      //     return null;
+      //   }
+      //   else{
+      //     return { doesMatchPassword: true }
+      //   }
+    }
 
   }
   onSubmit(){

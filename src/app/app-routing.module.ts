@@ -17,8 +17,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { SetnewpasswordComponent } from './setnewpassword/setnewpassword.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-  { path:'welcome' , component: WelcomepageComponent },
+  // { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path:'' , component: WelcomepageComponent },
   { path:'forgotpassword' , component: ForgotpasswordComponent },
   { path:'index' , component: IndexpageComponent,canActivate: [AuthGuard] },
   { path:'newsfeed' , component: NewsfeedComponent,canActivate: [AuthGuard] },
@@ -39,3 +39,9 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+// @ngModule({
+//   imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: ‘reload’})],
+//   exports: [RouterModule],
+//   })

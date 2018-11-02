@@ -26,7 +26,6 @@ export class ApiService {
   constructor(private http : HttpClient,
               private router : Router,
               private jwtservice : JwtService) { }
-
               
   private profile = new BehaviorSubject<any>(0);
   public myprofile = this.profile.asObservable();

@@ -1,6 +1,21 @@
 <app-header></app-header>
 <br/>
 
+<!-- <angular-file-uploader
+      [config]="afuConfig">
+</angular-file-uploader> -->
+
+<p-fileUpload name="demo[]" url="http://localhost:3000/fileupload" (onUpload)="onUploadFile($event)"
+        multiple="multiple" accept="image/*" maxFileSize="1000000">
+    <ng-template pTemplate="content">
+        <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+        </ul>
+    </ng-template>
+</p-fileUpload>
+
+
+
 <!-- <form [formGroup]="imageUpload" (ngSubmit)="onSave(file)" class="form-group" method="POST">
   <div class="form-group">
 
@@ -133,3 +148,5 @@
 
   </div>
 </div>
+
+<p-toast [style]="{marginTop: '80px'}"></p-toast>

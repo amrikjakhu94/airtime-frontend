@@ -40,6 +40,7 @@ export class TweetsComponent implements OnInit {
     this.apiService.editedTweet(this.tweetId,this.editTweetForm.value).subscribe(
       (res) => {
         console.log('Tweet edited success');
+        this.finalTweets = [];
         this.getTweets();
       }
     );

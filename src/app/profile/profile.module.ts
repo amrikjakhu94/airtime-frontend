@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CropperModule } from 'ngx-cropper';
+import { AngularFileUploaderModule } from "angular-file-uploader";
 import { FileUploadModule } from 'primeng/fileupload';
 
 import { ProfileComponent } from './profile.component';
@@ -15,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
 import { LikesComponent } from './likes/likes.component';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   imports: [
@@ -26,7 +28,9 @@ import { ButtonModule } from 'primeng/button';
     CropperModule,
     FileUploadModule,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+    ToastModule,
+    AngularFileUploaderModule
   ],
   declarations: [
     ProfileComponent,
