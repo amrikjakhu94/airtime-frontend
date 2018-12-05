@@ -64,13 +64,12 @@ export class SettingsComponent implements OnInit {
     this.display = true;
   }
   ngOnInit() {
-    this.apiService.editProfileRequest()
-      .subscribe(
-        (response) => {
-          this.userDetails = response['user'];
-          this.editprofileForm.patchValue(this.userDetails)
-        }
-      )
+    this.apiService.editProfileRequest().subscribe(
+      (response) => {
+        this.userDetails = response['user'];
+        this.editprofileForm.patchValue(this.userDetails)
+      }
+    )
   }
 
 }
